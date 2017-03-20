@@ -1,4 +1,5 @@
 #include "threadpool.h"
+#include "scope_guard.h"
 
 namespace utils {
 
@@ -112,6 +113,7 @@ void ThreadPool::RemoveWorker(unsigned long id)
 
 void ThreadPool::Worker::Run()
 {
+    auto sg = make_scope_guard(std::bind(&ThreadPool::RemoveWorker, pool_, (unsigned long)this));
     queue_.AddThreadId(std::this_thread::get_id());
 
     for(;;)
@@ -144,7 +146,7 @@ void ThreadPool::Worker::Run()
         }
     }
 
-     pool_->RemoveWorker((unsigned long)this); /// Remove worker
+     //pool_->RemoveWorker((unsigned long)this); /// Remove worker
 }
 
 } // namespace utils
