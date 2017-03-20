@@ -145,8 +145,6 @@ void ThreadPool::Worker::Run()
             msg->Release();
         }
     }
-
-     //pool_->RemoveWorker((unsigned long)this); /// Remove worker
 }
 
 } // namespace utils
