@@ -16,7 +16,7 @@ public:
     ScopeGuard(const ScopeGuard&) = delete;
     ScopeGuard& operator=(const ScopeGuard&) = delete;
 
-    ScopeGuard(ScopeGuard&& that)
+    ScopeGuard(ScopeGuard&& that) noexcept
         : functor_(std::move(that.functor_))
         , active_(that.active_)
     {
