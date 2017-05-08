@@ -5,7 +5,6 @@
 
 namespace utils {
 
-
 template<typename F>
 class ScopeGuard{
 private:
@@ -32,8 +31,6 @@ public:
 
 template <typename F>
 inline ScopeGuard<F> make_scope_guard(F&& f){ return ScopeGuard<F>(std::forward<F>(f)); }
-
-
 
 } // namespace utils
 
