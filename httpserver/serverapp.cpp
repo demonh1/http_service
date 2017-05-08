@@ -13,7 +13,6 @@ ServerApp::ServerApp()
 
 int ServerApp::main(const std::vector<std::string>& args)
 {
-
     Poco::AutoPtr<Poco::Net::HTTPServerParams> params(new Poco::Net::HTTPServerParams());
     params->setMaxQueued(64);
     params->setMaxThreads(4);
@@ -28,7 +27,6 @@ int ServerApp::main(const std::vector<std::string>& args)
     server.stop();
 
     return 0;
-
 }
 
 } // namespace http_service
