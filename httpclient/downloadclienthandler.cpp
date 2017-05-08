@@ -14,7 +14,6 @@
 #include "Poco/AsyncChannel.h"
 #include "Poco/ConsoleChannel.h"
 
-
 namespace http_client {
 
 DownloadClientHandler::DownloadClientHandler(unsigned int threads_count)
@@ -35,7 +34,6 @@ DownloadClientHandler::~DownloadClientHandler()
     task_pool_->Stop();
 }
 
-
 void DownloadClientHandler::Start(unsigned int threads_count, const char* file_path, const char* out_dir)
 {
 
@@ -49,9 +47,7 @@ void DownloadClientHandler::Start(unsigned int threads_count, const char* file_p
     {
         logger_.error(e.what());
     }
-
 }
-
 
 void DownloadClientHandler::LoadSettings(const std::string& file_path)
 {
@@ -70,9 +66,7 @@ void DownloadClientHandler::LoadSettings(const std::string& file_path)
     }
 
     file.close();
-
 }
-
 
 void DownloadClientHandler::Download(const std::string& out_dir)
 {
@@ -101,13 +95,11 @@ void DownloadClientHandler::DownloadFile(const std::string& url, const std::stri
         {
             poco_information_f1(logger_, "File '%s' is loaded", filename);
         }
-
     }
     catch(std::exception& e)
     {
        logger_.error(e.what());
     }
-
 }
 
 /// download file
