@@ -7,6 +7,5 @@ int main(int argc, char *argv[])
 {
     ClientSingle::instance().Setup(argc,argv);
 
-
     return 0;
 }

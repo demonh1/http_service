@@ -11,7 +11,6 @@ namespace http_client {
 class Client
 {
 public:
-    Client();
     void Setup(int argc, char* argv[]);
 
 private:

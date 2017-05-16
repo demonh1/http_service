@@ -16,7 +16,6 @@ public:
     PriorityQueue(uint32_t size = 0) : queue_size_(size), count_(0), queue_(16) {}
     ~PriorityQueue() = default;
 
-
     void Push(const Message* msg)
     {
         int prio = msg->priority();
@@ -37,14 +36,12 @@ public:
 
             lock_t lock(locker_);
             overload_event_.wait(lock);
-
         }
 
         if(count == 1)
         {
             event_.notify_all();
         }
-
     }
 
     const Message* Pop()
@@ -66,9 +63,7 @@ public:
                     {
                         overload_event_.notify_all();
                     }
-
                     break;
-
                 }
             }
         }
@@ -77,9 +72,7 @@ public:
             event_.wait(lock);
 
         return msg;
-
     }
-
 
     void AddThreadId(std::thread::id id)
     {
@@ -94,7 +87,6 @@ public:
     }
 
 private:
-
     bool CheckThreadId(const std::thread::id& id)
     {
         return thread_ids_.find(id) != thread_ids_.end();
@@ -108,7 +100,6 @@ private:
     condvar_t event_, overload_event_;
     std::set<std::thread::id> thread_ids_;
 };
-
 
 } // namespace utils
 

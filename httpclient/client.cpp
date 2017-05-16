@@ -2,14 +2,11 @@
 #include "downloadclienthandler.h"
 
 #include <boost/lexical_cast.hpp>
+#include <getopt.h>
 #include <iostream>
 
 namespace http_client {
 
-Client::Client()
-{
-
-}
 
 void Client::Setup(int argc, char* argv[])
 {
@@ -43,31 +40,33 @@ void Client::ParseCmdLine(int argc, char* argv[], std::string& strtype, std::str
 {
     try
     {
-        if(argc == 0) { throw std::runtime_error("Not enought parameters. Run with -h for help."); }
-
-        for(int i = 1; i < argc; ++i)
+        if(argc == 1)
         {
-            std::string param(argv[i]);
-            std::cout << "param " << param << std::endl;
+            throw std::runtime_error("Not enought parameters. Run with -h for help.");
+        }
 
-            if( param.find("-t") == 0 )
+        int opt;
+        while ((opt = getopt(argc, argv, "t:n:f:o:h")) != -1)
+        {
+            switch (opt)
             {
-                strtype.assign(param.substr(2));
-            }
-            else if( param.find("-n") == 0 )
-            {
-                strnum.assign(param.substr(2));
-            }
-            else if( param.find("-f") == 0 )
-            {
-                filename.assign(param.substr(2));
-            }
-            else if( param.find("-o") == 0 )
-            {
-                outdirname.assign(param.substr(2));
+            case 't':
+                strtype.assign(optarg);
+                break;
+            case 'n':
+                strnum.assign(optarg);
+                break;
+            case 'f':
+                filename.assign(optarg);
+                break;
+            case 'o':
+                outdirname.assign(optarg);
+                break;
+            case 'h':
+            default:
+                throw std::runtime_error("Using comands: \n replcfg -t[ype]<type> -n[umber]<thread count> -f[ilename]<filename> -o[utput]<directory>\n");
 
             }
-            else if( param.find("-h") ){ throw std::runtime_error("Using comands: \n replcfg -f[ilename]<filename>\n -s[uffix]<suffix"); }
         }
 
     }
