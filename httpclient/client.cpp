@@ -64,7 +64,7 @@ void Client::ParseCmdLine(int argc, char* argv[], std::string& strtype, std::str
                 break;
             case 'h':
             default:
-                throw std::runtime_error("Using comands: \n replcfg -t[ype]<type> -n[umber]<thread count> -f[ilename]<filename> -o[utput]<directory>\n");
+                throw std::runtime_error("Using comands: \n ./http_client -t[ype]<type> -n[umber]<thread count> -f[ilename]<filename> -o[utput]<directory>\n");
 
             }
         }
