@@ -6,7 +6,9 @@ if(CMAKE_BUILD_TYPE STREQUAL "")
     #set(CMAKE_BUILD_TYPE Release)
 endif()
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
 set(SRC_LIST ${SRC_LIST} "appserver.h" "sync.h" "msg.h" "singleton.h" "file_utils.h")
 
 aux_source_directory(. SRC_LIST)
