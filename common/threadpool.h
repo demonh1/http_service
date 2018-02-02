@@ -64,7 +64,7 @@ private:
     static constexpr int32_t MSGID_STOP_THREAD_POOL = 3724;
     struct StopThreadPoolMessage : Message {
         StopThreadPoolMessage(size_t count) : Message(MSGID_STOP_THREAD_POOL), count_(count) {}
-        size_t DecCount() const { --count_; }
+        size_t DecCount() const { return --count_; }
     private:
         mutable size_t count_;
     };

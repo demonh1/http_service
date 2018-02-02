@@ -30,8 +30,8 @@ private:
     };
 
 private:
-    std::thread* thread_;
     ThreadTask* thread_task_;
+    std::thread* thread_;
 };
 
 } // namespace utils
