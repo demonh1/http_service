@@ -5,7 +5,7 @@
 #include "priority_queue.h"
 #include <atomic>
 #include <unordered_map>
-#include <list>
+#include <vector>
 #include <memory>
 #include <functional>
 
@@ -77,7 +77,7 @@ private:
     std::atomic<uint32_t> stoped_;
     PriorityQueue queue_;
     WorkersMap workers_;
-    std::list<WorkerPtr> stoplist_;
+    std::vector<WorkerPtr> stoplist_;
     mutex_t locker_;
     condvar_t event_;
 
