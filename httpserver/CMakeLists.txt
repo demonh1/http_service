@@ -12,9 +12,9 @@ aux_source_directory(. SRC_LIST)
 
 # boost
 find_package(Boost 1.54.0 COMPONENTS system thread regex chrono filesystem REQUIRED)
-if (Boost_FOUND)
-    include_directories (SYSTEM ${Boost_INCLUDE_DIR})
-endif ()
+#if (Boost_FOUND)
+#    include_directories (SYSTEM ${Boost_INCLUDE_DIR})
+#endif ()
 
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../common/debug)
 
