@@ -23,9 +23,6 @@ endif()
 
 # boost
 find_package(Boost 1.54.0 COMPONENTS system thread regex chrono filesystem REQUIRED)
-if (Boost_FOUND)
-    include_directories (SYSTEM ${Boost_INCLUDE_DIR})
-endif ()
 
 find_library( POCO_FOUNDATION PocoFoundation )
 find_library( POCO_NET PocoNet )
